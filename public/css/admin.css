@@ -1,0 +1,333 @@
+:root {
+    --bs-font-sans-serif: 'Raleway', sans-serif;
+    --background: #382B19;
+    --botones-nav: #B4A98C;
+    --li-background: #D3A401;
+    --body-color: #F4F1ED;
+    --color-brown: #382B19;
+}
+
+
+.navbar {
+    background-color: #382B19 !important;
+    color: #fff;
+    margin-left: 0;
+    position: fixed;
+    width: 100%;
+    padding-left: 18%;
+    height: 4rem;
+    position: absolute;
+
+}
+
+body {
+    background-color: #F4F1ED;
+    padding: 0;
+    margin: 0;
+
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.container-fluid-nav {
+    margin: 0;
+    font-size: 25px;
+    color: #F4F1ED;
+
+
+}
+
+.sidebar {
+    margin-top: 0;
+
+    max-width: 18%;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #382B19;
+    padding-top: 25px;
+}
+
+
+.sidebar-item {
+
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+
+}
+
+.sidebar-item-scroll {
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    /* Hace que la barra de desplazamiento sea delgada */
+    scrollbar-color: #999 #333333;
+    /* Define los colores de la barra de desplazamiento (fondo y flecha) */
+}
+
+.sidebar-item-display {
+    display: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-item:last-child {
+    border-bottom: none;
+}
+
+.sidebar-item a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-item i {
+    margin-right: 10px;
+}
+
+
+
+.sidebar-item.active {
+    background-color: #495057;
+}
+
+.submenu {
+    padding-left: 10px;
+}
+
+.submenu a {
+    font-size: 16px;
+}
+
+.sidebar-image .figure-img {
+    filter: drop-shadow(0 0 1px rgba(224, 223, 223, 1));
+
+}
+
+.content-template {
+
+
+    width: 82%;
+    margin: 0 auto;
+    position: fixed;
+    margin-top: 4rem;
+    margin-left: 18%;
+    padding: 2rem;
+    height: 100vh;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--botones-nav) var(--color-brown);
+
+}
+
+.sidebar ul li {
+    list-style: none;
+    padding: 1em;
+    height: 2em;
+    margin-top: 0.2rem;
+    display: flex;
+    align-items: center;
+
+
+}
+
+
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.9rem;
+
+
+}
+
+.container-table {
+    max-width: 100%;
+    overflow-x: auto;
+
+
+}
+
+thead {
+    background-color: var(--color-brown);
+    color: var(--body-color);
+}
+
+th {
+    border: solid 1px var(--body-color);
+}
+
+thead:hover {
+    background-color: var(--color-brown);
+    color: var(--body-color);
+}
+
+td {
+    border: 1px solid var(--color-brown);
+    text-align: left;
+    padding: 8px;
+
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tbody:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody :hover {
+    background-color: #dddddd;
+}
+
+
+/* Estilos para la modal */
+.modal-wrapper {
+    display: none;
+    /* Por defecto, la modal está oculta */
+    position: absolute;
+    /* Posición fija en la ventana */
+    z-index: 1000;
+    /* Índice Z alto para superponerse a otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo semitransparente */
+    overflow: auto;
+    /* Habilita el desplazamiento si la modal es muy larga */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    /* Centra la modal verticalmente y la separa del borde superior */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    /* Ancho de la modal */
+    max-height: 80rem;
+}
+
+.close {
+    color: #aaa;
+    display: flex;
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    justify-content: flex-end;
+
+
+}
+
+.close:hover,
+.close:focus {
+    color: darkblue;
+    border-radius: 50%;
+    background-color: #888;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    color: rgb(82, 51, 5);
+}
+
+
+
+@media screen and (max-width: 828px) {
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar-item-display {
+        display: block;
+    }
+
+    .sidebar-item-display a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .navbar {
+        width: 100%;
+        padding-left: 0;
+
+    }
+
+    .content {
+        margin-left: 0;
+        padding-top: 20%;
+        max-width: 100%;
+    }
+
+    .submenu {
+        padding-left: 0;
+
+    }
+
+    .submenu a {
+        display: block;
+        font-size: 16px;
+        width: 100%;
+        padding: 15px;
+        margin: 5px;
+        background-color: blue;
+        color: white;
+        text-decoration: none;
+    }
+
+    .container-fluid-nav{
+
+        background-color: #382B19;
+
+    }
+
+    .content-template{
+        margin-left: 0;
+        width: 100%;
+        padding: 2rem;
+        height: 100vh;
+        overflow: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--botones-nav) var(--color-brown);
+    }
+
+
+
+}
+
+
+.submenu .list-unstyled li .fa-chevron-right {
+
+    color: #D3A401;
+    margin-left: 3px;
+
+}
+
+
+
