@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController as FormController;
 use App\Http\Controllers\GenerarReporte;
+use App\Http\Controllers\GenerarReporteController;
 use App\Http\Controllers\ReclamoController;
 
 
@@ -45,7 +46,9 @@ Route::get('/quejas-juridicas-atendidas', [FormController::class, 'consultarQuej
 
 Route::post('/update-estado', [ReclamoController::class, 'updateEstado'])->name('update.estado');
 
+//reporte
 
+Route::get('/generar-reporte', [GenerarReporteController::class, 'generarReporte'])->name('generar.reporte');
 
 Route::get('/reporte-excel', [GenerarReporte::class, 'reporteExcel'])->name('reporte.excel');
 Route::get('/reporte-pdf', [GenerarReporte::class, 'reportePDF'])->name('reporte.pdf');

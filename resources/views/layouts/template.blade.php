@@ -70,6 +70,8 @@
                             </ul>
                         </div>
                     </div>
+
+                    
                 </ul>
             </div>
         </div>
@@ -157,6 +159,12 @@
                             </div>
                         </ul>
                     </div>
+                    
+                    <a href="/generar-reporte"  class="d-flex align-items-center justify-content-between">
+                            <span>Reportes</span>
+                    </a>
+
+                    
                 </div>
             </div>
 
