@@ -6,6 +6,7 @@ use App\Http\Controllers\GenerarReporte;
 use App\Http\Controllers\GenerarReporteController;
 use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\HistorialController;
+use App\Http\Controllers\DashboardController;
 
 
 
@@ -59,6 +60,9 @@ Route::get('/generar-reporte-pdf', [GenerarReporteController::class, 'generarRep
 
 Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
 
+//dashboard
+
+Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::get('/reporte-excel', [GenerarReporte::class, 'reporteExcel'])->name('reporte.excel');
 Route::get('/reporte-pdf', [GenerarReporte::class, 'reportePDF'])->name('reporte.pdf');
