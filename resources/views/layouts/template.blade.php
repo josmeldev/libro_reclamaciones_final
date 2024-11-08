@@ -22,6 +22,12 @@
             font-size: 0.8rem;
             float: right;
         }
+        .alerta {
+            background-color: #ffcccc;
+            border-left: 5px solid red;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
     </style>
 
 </head>
