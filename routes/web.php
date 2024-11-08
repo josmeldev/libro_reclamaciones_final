@@ -38,6 +38,8 @@ Route::get('/reclamos-juridicas-en-atencion', [FormController::class, 'ConsultaR
 
 Route::get('/reclamos-juridicas-atendidas', [FormController::class, 'ConsultaReclamosAtendidosPJ'])->name('admin.PJ.Reclamos.atendidos');
 
+Route::get('/quejas-juridicas-en-atencion', [FormController::class, 'consultarQuejasEnAtencionPJ'])->name('admin.PJ.Quejas.en_atencion');
+Route::get('/quejas-juridicas-atendidas', [FormController::class, 'consultarQuejasAtendidasPJ'])->name('admin.PJ.Quejas.atendidos');
 
 // actualizar estado
 

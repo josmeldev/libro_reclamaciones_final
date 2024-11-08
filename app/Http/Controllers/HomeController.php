@@ -271,7 +271,7 @@ class HomeController extends Controller
             ->leftJoin('reclamos as r', 'c.id', '=', 'r.cliente_id')
             ->leftJoin('apoderados as a', 'c.id', '=', 'a.id_cliente')
             ->where('r.estado', 'ATENDIDO')
-            ->whereIn('r.tipo_reclamo', ['reclamo', 'queja']);
+            ->whereIn('r.tipo_reclamo', ['reclamo']);
 
     }
 
@@ -335,6 +335,7 @@ class HomeController extends Controller
     private function consultarQuejasEmpresas(){
         return DB::table('empresas AS e')
             ->select(
+                'r.id as reclamo_id',
                 'e.ruc',
                 'e.razon_social',
                 'e.fono_empresa AS telefono',
@@ -583,6 +584,30 @@ class HomeController extends Controller
             ->where('r.estado', 'EN ATENCION');
     }
     
+
+    public function consultarQuejasAtendidasPJ(){
+        $quejasAtendidasPJ = $this->consultarQuejasAtendidasEmpresas()->paginate(5);
+        return view('administration.quejas.atendidas_pj', compact('quejasAtendidasPJ'));
+    }
+
+    public function consultarQuejasAtendidasEmpresas(){
+        return DB::table('empresas AS e')
+            ->select(
+                
+                'e.ruc',
+                'e.razon_social',
+                'e.fono_empresa AS telefono',
+                'e.direccion',
+                'r.tipo_reclamo',
+                'r.bien_contratado',
+                'r.texto_queja AS queja',
+                'r.detalle_reclamacion',
+                'r.estado'
+            )
+            ->leftJoin('reclamos as r', 'e.id', '=', 'r.empresa_id')
+            ->where('r.tipo_reclamo', 'queja')
+            ->where('r.estado', 'ATENDIDO');
+    }
 
 
 }

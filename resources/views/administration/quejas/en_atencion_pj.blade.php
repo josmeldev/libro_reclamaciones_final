@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
-    <h3 class="title text-center">quejas en atencion personas judiricas</h3>
+    <h3 class="title text-center">Quejas en atención personas naturales</h3>
     <!-- Otro contenido de la página -->.
 
     <div class="container container-table mt-4 mb-5 rounded">
@@ -10,18 +10,13 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>DNI</th>
-                    <th>Nombres y Apellidos</th>
+                    <th>RUC</th>
+                    <th>Razon Social</th>
                     <th>Telefono</th>
-                    <th>Email</th>
-                    <th>Menor Edad</th>
-                    <th>Apoderado</th>
-                    <th>DNI Apoderado</th>
-                    <th>Direccion Apoderado</th>
+                    <th>Direccion</th>
                     <th>Tipo Reclamo</th>
                     <th>Bien Contratado</th>
-
-                    <th>Pedido</th>
+                    <th>Detalle</th>
                     <th>Estado</th>
                     <!-- Agrega otras columnas según sea necesario -->
                 </tr>
@@ -34,17 +29,12 @@
                 @foreach ($quejasEnAtencionPJ as $row)
                     <tr>
                         <td>{{ $i++ }}</td>
-                        <td>{{ $row->dni }}</td>
-                        <td>{{ $row->apellidos_cliente }}</td>
-                        <td>{{ $row->telefono_cliente }}</td>
-                        <td>{{ $row->correo_cliente }}</td>
-                        <td>{{ $row->menor_edad }}</td>
-                        <td>{{ $row->apellidos_apoderado }}</td>
-                        <td>{{ $row->dni_apoderado }}</td>
-                        <td>{{ $row->direccion_apoderado }}</td>
+                        <td>{{ $row->ruc }}</td>
+                        <td>{{ $row->razon_social }}</td>
+                        <td>{{ $row->telefono }}</td>
+                        <td>{{ $row->direccion }}</td>
                         <td>{{ $row->tipo_reclamo }}</td>
                         <td>{{ $row->bien_contratado }}</td>
-
                         <td>{{ $row->detalle_reclamacion }}</td>
                         <td>
                     <select class="form-control estado-select" data-id="{{$row->reclamo_id}}">
@@ -59,22 +49,28 @@
                     @if ($counter >= 10)
                         @break
                     @endif
-                @endforeach
+                @endforeach 
             </tbody>
         </table>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 @if ($quejasEnAtencionPJ->currentPage() > 1)
                     <li class="page-item">
-                        <a class="page-link" href="{{ $quejasEnAtencionPJ->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Previous</a>
+                        <a class="page-link" href="{{ $quejasEnAtencionPJ->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
                     </li>
                 @endif
                 @for ($i = 1; $i <= $quejasEnAtencionPJ->lastPage(); $i++)
-                    <li class="page-item {{ $i == $quejasEnAtencionPJ->currentPage() ? 'active' : '' }}"><a class="page-link" href="{{ $quejasEnAtencionPN->url($i) }}">{{ $i }}</a></li>
+                    <li class="page-item {{ $i == $quejasEnAtencionPJ->currentPage() ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $quejasEnAtencionPJ->url($i) }}">{{ $i }}</a>
+                    </li>
                 @endfor
                 @if ($quejasEnAtencionPJ->currentPage() < $quejasEnAtencionPJ->lastPage())
                     <li class="page-item">
-                        <a class="page-link" href="{{ $quejasEnAtencionPJ->nextPageUrl() }}">Next</a>
+                        <a class="page-link" href="{{ $quejasEnAtencionPJ->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
                     </li>
                 @endif
             </ul>
@@ -123,6 +119,4 @@
         });
     });
 </script>
-
-
 @endsection
