@@ -170,6 +170,11 @@
                     </a>
                 </div> 
                 <div class="sidebar-item">
+                <a href="/historial"  class="d-flex align-items-center justify-content-between ">
+                            <strong>HISTORIAL</strong>
+                    </a>
+                </div>  
+                <div class="sidebar-item">
                 <a href="/users"  class="d-flex align-items-center justify-content-between ">
                             <strong>USUARIOS</strong>
                     </a>
