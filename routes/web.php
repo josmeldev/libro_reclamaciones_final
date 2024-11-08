@@ -50,6 +50,11 @@ Route::post('/update-estado', [ReclamoController::class, 'updateEstado'])->name(
 
 Route::get('/generar-reporte', [GenerarReporteController::class, 'generarReporte'])->name('generar.reporte');
 
+
+// generar report pdf
+Route::get('/generar-reporte-pdf', [GenerarReporteController::class, 'generarReportePDF'])->name('generar.reporte.pdf');
+
+
 Route::get('/reporte-excel', [GenerarReporte::class, 'reporteExcel'])->name('reporte.excel');
 Route::get('/reporte-pdf', [GenerarReporte::class, 'reportePDF'])->name('reporte.pdf');
 

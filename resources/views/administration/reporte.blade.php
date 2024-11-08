@@ -103,6 +103,10 @@
     <div class="d-flex justify-content-center pb-5">
         {{ $resultados->links() }}
     </div>
+    <!-- Botón para descargar PDF -->
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{{ route('generar.reporte.pdf', request()->query()) }}" class="btn btn-danger">Descargar PDF</a>
+    </div>
 @else
     <p>No se encontraron resultados para los filtros seleccionados.</p>
 @endif
