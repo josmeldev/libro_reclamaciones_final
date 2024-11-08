@@ -160,12 +160,20 @@
                         </ul>
                     </div>
                     
-                    <a href="/generar-reporte"  class="d-flex align-items-center justify-content-between">
-                            <span>Reportes</span>
-                    </a>
+                    
 
                     
                 </div>
+                <div class="sidebar-item">
+                <a href="/generar-reporte"  class="d-flex align-items-center justify-content-between ">
+                            <strong>REPORTES</strong>
+                    </a>
+                </div> 
+                <div class="sidebar-item">
+                <a href="/users"  class="d-flex align-items-center justify-content-between ">
+                            <strong>USUARIOS</strong>
+                    </a>
+                </div>      
             </div>
 
 
