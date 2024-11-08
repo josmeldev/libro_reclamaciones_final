@@ -9,6 +9,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $today = date('Y-m-d');
+
         $totalReclamos = DB::table('reclamos')->where('tipo_reclamo', 'reclamo')->count();
         $totalQuejas = DB::table('reclamos')->where('tipo_reclamo', 'queja')->count();
         $totalClientes = DB::table('clientes')->count();
@@ -20,6 +22,9 @@ class DashboardController extends Controller
         $quejasEnAtencion = DB::table('reclamos')->where('tipo_reclamo', 'queja')->where('estado', 'EN ATENCION')->count();
         $quejasAtendidas = DB::table('reclamos')->where('tipo_reclamo', 'queja')->where('estado', 'ATENDIDO')->count();
 
+        $reclamosHoy = DB::table('reclamos')->where('tipo_reclamo', 'reclamo')->whereDate('created_at', $today)->count();
+        $quejasHoy = DB::table('reclamos')->where('tipo_reclamo', 'queja')->whereDate('created_at', $today)->count();
+
         return view('dashboard.index', compact(
             'totalReclamos',
             'totalQuejas',
@@ -30,7 +35,9 @@ class DashboardController extends Controller
             'reclamosAtendidos',
             'quejasPorAtender',
             'quejasEnAtencion',
-            'quejasAtendidas'
+            'quejasAtendidas',
+            'reclamosHoy',
+            'quejasHoy'
         ));
     }
 }

@@ -1,3 +1,4 @@
+
 @extends('layouts.template')
 
 @section('content')
@@ -8,13 +9,24 @@
         width: 20%;
         /* 100% / 5 */
     }
+    .card-header .badge {
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        float: right;
+    }
 </style>
 <h3 class="title text-center">Dashboard</h3>
 <div class="container mt-4">
     <div class="row">
         <div class="col-12 col-md-1-5">
             <div class="card text-white bg-primary mb-3">
-                <div class="card-header">Total Reclamos</div>
+                <div class="card-header">
+                    Total Reclamos
+                    <span class="badge">{{ $reclamosHoy }}</span>
+                </div>
                 <div class="card-body">
                     <h6 class="card-title">{{ $totalReclamos }}</h6>
                 </div>
@@ -22,7 +34,10 @@
         </div>
         <div class="col-12 col-md-1-5">
             <div class="card text-white bg-secondary mb-3">
-                <div class="card-header">Total Quejas</div>
+                <div class="card-header">
+                    Total Quejas
+                    <span class="badge">{{ $quejasHoy }}</span>
+                </div>
                 <div class="card-body">
                     <h6 class="card-title">{{ $totalQuejas }}</h6>
                 </div>

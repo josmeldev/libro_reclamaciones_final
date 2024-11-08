@@ -14,6 +14,14 @@
         .card-header {
             font-size: 0.9rem; /* Ajustar el tamaño de la fuente */
         }
+        .card-header .badge {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            float: right;
+        }
     </style>
 
 </head>
