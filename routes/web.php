@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController as FormController;
 use App\Http\Controllers\GenerarReporte;
 use App\Http\Controllers\GenerarReporteController;
 use App\Http\Controllers\ReclamoController;
+use App\Http\Controllers\HistorialController;
 
 
 
@@ -53,6 +54,10 @@ Route::get('/generar-reporte', [GenerarReporteController::class, 'generarReporte
 
 // generar report pdf
 Route::get('/generar-reporte-pdf', [GenerarReporteController::class, 'generarReportePDF'])->name('generar.reporte.pdf');
+
+// historial de cambios
+
+Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
 
 
 Route::get('/reporte-excel', [GenerarReporte::class, 'reporteExcel'])->name('reporte.excel');
