@@ -46,7 +46,13 @@
                         <td>{{ $row->bien_contratado }}</td>
                         <td>{{ $row->reclamo_o_queja }}</td>
                         <td>{{ $row->detalle_reclamacion }}</td>
-                        <td>{{ $row->estado }}</td>
+                        <td>
+                    <select class="form-control estado-select" data-id="{{$row->reclamo_id}}">
+                        <option value="POR ATENDER" {{ $row->estado == 'POR ATENDER' ? 'selected' : '' }}>POR ATENDER</option>
+                        <option value="EN ATENCION" {{ $row->estado == 'EN ATENCION' ? 'selected' : '' }}>EN ATENCION</option>
+                        <option value="ATENDIDO" {{ $row->estado == 'ATENDIDO' ? 'selected' : '' }}>ATENDIDO</option>
+                    </select>
+                </td>
                         <!-- Agrega otras columnas según sea necesario -->
                     </tr>
                     @php $counter++; @endphp
@@ -74,4 +80,47 @@
             </ul>
         </nav>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.estado-select').change(function() {
+            var id = $(this).data('id');
+            var estado = $(this).val();
+
+            if (confirm('¿Está seguro de que desea cambiar el estado?')) {
+                $.ajax({
+                    url: '{{ route("update.estado") }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: id,
+                        estado: estado
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Estado actualizado correctamente');
+                            location.reload(); // Recargar la página para actualizar la tabla
+                        } else {
+                            alert('Error al actualizar el estado');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        alert('Error al actualizar el estado');
+                    }
+                });
+            } else {
+                // Si el usuario cancela, revertir el cambio en el select
+                $(this).val($(this).data('original'));
+            }
+        });
+
+        // Guardar el estado original en data-original
+        $('.estado-select').each(function() {
+            $(this).data('original', $(this).val());
+        });
+    });
+</script>
 @endsection

@@ -12,12 +12,10 @@
                 <th>RUC</th>
                 <th>Razón Social</th>
                 <th>Telefono</th>
-
-                <th>Representante Legal</th>
-                <th>DNI Representante Legal</th>
-                <th>Direccion Representante Legal</th>
+                <th>Direccion</th>
                 <th>Tipo Reclamo</th>
                 <th>Bien Contratado</th>
+               
 
                 <th>Pedido</th>
                 <th>Estado</th>
@@ -35,14 +33,12 @@
                 <td>{{ $row->ruc }}</td>
                 <td>{{ $row->razon_social }}</td>
                 <td>{{ $row->telefono }}</td>
-
-                <td>{{ $row->representante_legal }}</td>
-                <td>{{ $row->dni_representante_legal }}</td>
-                <td>{{ $row->direccion_representante_legal }}</td>
+                <td>{{ $row->direccion }}</td>
                 <td>{{ $row->tipo_reclamo }}</td>
                 <td>{{ $row->bien_contratado }}</td>
+                <td>{{$row->detalle_reclamacion}}</td>
 
-                <td>{{ $row->detalle_reclamacion }}</td>
+                
                 <td>{{ $row->estado }}</td>
                 <!-- Agrega otras columnas según sea necesario -->
             </tr>

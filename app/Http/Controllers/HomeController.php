@@ -453,6 +453,7 @@ class HomeController extends Controller
     private function consultarReclamosEnAtencion(){
         return DB::table('clientes AS c')
             ->select(
+                'r.id as reclamo_id',
                 'c.dni AS dni',
                 'c.nombres_apellidos AS apellidos_cliente',
                 'c.fono_persona AS telefono_cliente',
@@ -488,6 +489,7 @@ class HomeController extends Controller
     public function consultarReclamosPorAtenderEmpresas(){
         return DB::table('empresas AS e')
             ->select(
+                'r.id as reclamo_id',
                 'e.ruc',
                 'e.razon_social',
                 'e.fono_empresa AS telefono',
@@ -512,6 +514,7 @@ class HomeController extends Controller
     public function consultarReclamosEnAtencionEmpresas(){
         return DB::table('empresas AS e')
             ->select(
+                'r.id as reclamo_id',
                 'e.ruc',
                 'e.razon_social',
                 'e.fono_empresa AS telefono',
