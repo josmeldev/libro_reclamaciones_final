@@ -100,7 +100,7 @@
         </tbody>
     </table>
     <!-- Enlaces de paginación -->
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center pb-5">
         {{ $resultados->links() }}
     </div>
 @else
