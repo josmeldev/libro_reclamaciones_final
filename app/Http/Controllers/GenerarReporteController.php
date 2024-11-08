@@ -128,7 +128,7 @@ public function generarReportePDF(Request $request)
             $query->whereBetween('r.created_at', [$request->input('fecha_inicio'), $request->input('fecha_fin')]);
         }
         $resultados = $query->orderBy('r.created_at', 'desc')->get(); // Obtener todos los resultados sin paginación
-        $pdf = PDF::loadView('administration.reporte_pdf', compact('resultados'));
+        $pdf = PDF::loadView('administration.reporte_pdf', compact('resultados'))->setPaper('a4', 'landscape');
         return $pdf->download('reporte.pdf');
     }
 }
