@@ -9,7 +9,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>ID</th>
                     <th>RUC</th>
                     <th>Razon Social</th>
                     <th>Telefono</th>
@@ -28,7 +28,7 @@
                 @endphp
                 @foreach ($quejasEnAtencionPJ as $row)
                     <tr>
-                        <td>{{ $i++ }}</td>
+                        <td>{{ $row->reclamo_id}}</td>
                         <td>{{ $row->ruc }}</td>
                         <td>{{ $row->razon_social }}</td>
                         <td>{{ $row->telefono }}</td>

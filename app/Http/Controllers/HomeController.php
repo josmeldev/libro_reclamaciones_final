@@ -580,7 +580,7 @@ class HomeController extends Controller
                 'r.estado'
             )
             ->leftJoin('reclamos as r', 'e.id', '=', 'r.empresa_id')
-            ->whereIn('r.tipo_reclamo', ['reclamo']) 
+            ->whereIn('r.tipo_reclamo', ['queja']) 
             ->where('r.estado', 'EN ATENCION');
     }
     
