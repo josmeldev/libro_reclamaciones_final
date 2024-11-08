@@ -10,7 +10,7 @@ class DashboardController extends Controller
     public function index()
     {
         $today = date('Y-m-d');
-        $alertDate = date('Y-m-d', strtotime('-10 days')); // 5 días antes del plazo máximo de 15 días
+        $alertDate = date('Y-m-d', strtotime('-5 minutes')); // 5 días antes del plazo máximo de 15 días
 
         $totalReclamos = DB::table('reclamos')->where('tipo_reclamo', 'reclamo')->count();
         $totalQuejas = DB::table('reclamos')->where('tipo_reclamo', 'queja')->count();

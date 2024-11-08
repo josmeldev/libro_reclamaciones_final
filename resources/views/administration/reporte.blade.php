@@ -32,9 +32,15 @@
             <option value="ATENDIDO">ATENDIDO</option>
         </select>
     </div>
+
     <div class="form-group">
         <label for="dni_ruc">DNI/RUC</label>
         <input type="text" name="dni_ruc" id="dni_ruc" class="form-control" placeholder="Ingrese DNI o RUC">
+    </div>
+
+    <div class="form-group">
+        <label for="reclamo_id">ID de Reclamo</label>
+        <input type="text" name="reclamo_id" id="reclamo_id" class="form-control" placeholder="Ingrese ID de Reclamo">
     </div>
 
     <div class="form-group">
@@ -82,7 +88,7 @@
         <tbody>
             @foreach ($resultados as $row)
             <tr>
-                <td>{{ $row->reclamo_id  }}</td>
+                <td>{{ $row->reclamo_id }}</td>
                 <td>{{ $row->dni ?? $row->ruc }}</td>
                 <td>{{ $row->apellidos_cliente ?? $row->razon_social }}</td>
                 <td>{{ $row->telefono_cliente ?? $row->telefono_empresa }}</td>
@@ -107,8 +113,6 @@
     <div class="d-flex justify-content-center pb-5">
         {{ $resultados->links() }}
     </div>
-    
-    
 @else
     <p>No se encontraron resultados para los filtros seleccionados.</p>
 @endif

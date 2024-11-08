@@ -1,4 +1,3 @@
-
 @extends('layouts.template')
 
 @section('content')
@@ -9,6 +8,7 @@
         width: 20%;
         /* 100% / 5 */
     }
+
     .card-header .badge {
         background-color: red;
         color: white;
@@ -17,6 +17,7 @@
         font-size: 0.8rem;
         float: right;
     }
+
     .alerta {
         background-color: #ffcccc;
         border-left: 5px solid red;
@@ -117,22 +118,23 @@
         </div>
     </div>
     <div class="mt-4">
-        <h4>Alertas de Reclamos y Quejas</h4>
+    <h4>Alertas: Respuesta en un Plazo Máximo de 15 Días Hábiles (¡Faltan 5 Días para el Vencimiento!)</h4>
+
         @foreach ($alertasReclamos as $reclamo)
-            <div class="alerta">
-                <strong>Reclamo ID:</strong> {{ $reclamo->id }}<br>
-                <strong>Fecha de Creación:</strong> {{ $reclamo->created_at }}<br>
-                <strong>Estado:</strong> {{ $reclamo->estado }}<br>
-                <strong>Tipo:</strong> Reclamo
-            </div>
+        <div class="alerta">
+            <strong>Reclamo ID:</strong> {{ $reclamo->id }}<br>
+            <strong>Fecha de Creación:</strong> {{ $reclamo->created_at }}<br>
+            <strong>Estado:</strong> {{ $reclamo->estado }}<br>
+            <strong>Tipo:</strong> Reclamo
+        </div>
         @endforeach
         @foreach ($alertasQuejas as $queja)
-            <div class="alerta">
-                <strong>Queja ID:</strong> {{ $queja->id }}<br>
-                <strong>Fecha de Creación:</strong> {{ $queja->created_at }}<br>
-                <strong>Estado:</strong> {{ $queja->estado }}<br>
-                <strong>Tipo:</strong> Queja
-            </div>
+        <div class="alerta">
+            <strong>Reclamo ID:</strong> {{ $queja->id }}<br>
+            <strong>Fecha de Creación:</strong> {{ $queja->created_at }}<br>
+            <strong>Estado:</strong> {{ $queja->estado }}<br>
+            <strong>Tipo:</strong> Queja
+        </div>
         @endforeach
     </div>
 </div>

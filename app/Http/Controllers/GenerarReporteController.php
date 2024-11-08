@@ -61,6 +61,9 @@ class GenerarReporteController extends Controller
               ->orWhere('e.ruc', $dni_ruc);
         });
     }
+    if ($request->has('reclamo_id') && $request->input('reclamo_id') != '') {
+        $query->where('r.id', $request->input('reclamo_id'));
+    }
 
     if ($request->has('fecha_inicio') && $request->has('fecha_fin') && $request->input('fecha_inicio') != '' && $request->input('fecha_fin') != '') {
         $query->whereBetween('r.created_at', [$request->input('fecha_inicio'), $request->input('fecha_fin')]);
