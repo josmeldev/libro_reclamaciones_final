@@ -22,11 +22,11 @@ Route::get('/admin', [FormController::class, 'admin'])->name('admin.index');
 Route::get('/personas-naturales-reclamos', [FormController::class, 'consultarReclamosPN'])->name('admin.consultarReclamosPN');
 Route::get('/personas-naturales-quejas', [FormController::class, 'consultarQuejasPN'])->name('admin.consultarQuejasPN');
 Route::get('/reclamos-naturales-atendidas', [FormController::class, 'consultarDatosClientesA'])->name('admin.PN.atendidos');
-Route::get('/quejas-atendidas', [FormController::class, 'ConsultaQuejasAtendidasPN'])->name('admin.PN.Quejas.atendidos');
+Route::get('/quejas-naturales-atendidas', [FormController::class, 'ConsultaQuejasAtendidasPN'])->name('admin.PN.Quejas.atendidos');
 Route::get('/personas-juridicas-reclamos', [FormController::class, 'ConsultaReclamosEmpresas'])->name('admin.consultarReclamosPJ');
 Route::get('/quejas-juridicas-por-atender', [FormController::class, 'ConsultaQuejasEmpresas'])->name('admin.consultarQuejasPJ');
 Route::get('/quejas-naturales-por-atender', [FormController::class, 'ConsultaQuejasPorAtenderPN'])->name('admin.PN.Quejas.por_atender');
-Route::get('/quejas_en_atencion', [FormController::class, 'ConsultaQuejasEnAtencionPN'])->name('admin.PN.Quejas.en_atencion');
+Route::get('/quejas-naturales-en-atencion', [FormController::class, 'ConsultaQuejasEnAtencionPN'])->name('admin.PN.Quejas.en_atencion');
 Route::get('/reclamos-naturales-por-atender', [FormController::class, 'ConsultaReclamosPorAtenderPN'])->name('admin.PN.Reclamos.por_atender');
 Route::get('/reclamos-naturales-en-atencion', [FormController::class, 'ConsultaReclamosEnAtencionPN'])->name('admin.PN.Reclamos.en_atencion');
 

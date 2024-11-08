@@ -359,6 +359,7 @@ class HomeController extends Controller
     private function consultarQuejasPorAtender(){
         return DB::table('clientes AS c')
             ->select(
+                'r.id as reclamo_id',
                 'c.dni AS dni',
                 'c.nombres_apellidos AS apellidos_cliente',
                 'c.fono_persona AS telefono_cliente',
@@ -389,6 +390,7 @@ class HomeController extends Controller
     private function consultarQuejasEnAtencion(){
         return DB::table('clientes AS c')
             ->select(
+                'r.id as reclamo_id',
                 'c.dni AS dni',
                 'c.nombres_apellidos AS apellidos_cliente',
                 'c.fono_persona AS telefono_cliente',
@@ -555,6 +557,32 @@ class HomeController extends Controller
             ->whereIn('r.tipo_reclamo', ['reclamo']) 
             ->where('r.estado', 'ATENDIDO');
     }
+
+    public function consultarQuejasEnAtencionPJ(){
+        $quejasEnAtencionPJ = $this->consultarQuejasEnAtencionEmpresas()->paginate(5);
+        return view('administration.quejas.en_atencion_pj', compact('quejasEnAtencionPJ'));
+    }
+
+
+    public function consultarQuejasEnAtencionEmpresas(){
+        return DB::table('empresas AS e')
+            ->select(
+                'r.id as reclamo_id',
+                'e.ruc',
+                'e.razon_social',
+                'e.fono_empresa AS telefono',
+                'e.direccion',
+                'r.tipo_reclamo',
+                'r.bien_contratado',
+                DB::raw('CASE WHEN r.tipo_reclamo = "reclamo" THEN r.texto_reclamo ELSE r.texto_queja END AS reclamo_o_queja'),
+                'r.detalle_reclamacion',
+                'r.estado'
+            )
+            ->leftJoin('reclamos as r', 'e.id', '=', 'r.empresa_id')
+            ->whereIn('r.tipo_reclamo', ['reclamo']) 
+            ->where('r.estado', 'EN ATENCION');
+    }
+    
 
 
 }

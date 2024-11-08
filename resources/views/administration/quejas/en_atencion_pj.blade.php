@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
-    <h3 class="title text-center">quejas en atencion personas naturales</h3>
+    <h3 class="title text-center">quejas en atencion personas judiricas</h3>
     <!-- Otro contenido de la página -->.
 
     <div class="container container-table mt-4 mb-5 rounded">
@@ -28,10 +28,10 @@
             </thead>
             <tbody>
                 @php
-                    $i = 1 + ($quejasEnAtencionPN->currentPage() - 1) * $quejasEnAtencionPN->perPage();
+                    $i = 1 + ($quejasEnAtencionPJ->currentPage() - 1) * $quejasEnAtencionPJ->perPage();
                     $counter = 0;
                 @endphp
-                @foreach ($quejasEnAtencionPN as $row)
+                @foreach ($quejasEnAtencionPJ as $row)
                     <tr>
                         <td>{{ $i++ }}</td>
                         <td>{{ $row->dni }}</td>
@@ -64,17 +64,17 @@
         </table>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                @if ($quejasEnAtencionPN->currentPage() > 1)
+                @if ($quejasEnAtencionPJ->currentPage() > 1)
                     <li class="page-item">
-                        <a class="page-link" href="{{ $quejasEnAtencionPN->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Previous</a>
+                        <a class="page-link" href="{{ $quejasEnAtencionPJ->previousPageUrl() }}" tabindex="-1" aria-disabled="true">Previous</a>
                     </li>
                 @endif
-                @for ($i = 1; $i <= $quejasEnAtencionPN->lastPage(); $i++)
-                    <li class="page-item {{ $i == $quejasEnAtencionPN->currentPage() ? 'active' : '' }}"><a class="page-link" href="{{ $quejasEnAtencionPN->url($i) }}">{{ $i }}</a></li>
+                @for ($i = 1; $i <= $quejasEnAtencionPJ->lastPage(); $i++)
+                    <li class="page-item {{ $i == $quejasEnAtencionPJ->currentPage() ? 'active' : '' }}"><a class="page-link" href="{{ $quejasEnAtencionPN->url($i) }}">{{ $i }}</a></li>
                 @endfor
-                @if ($quejasEnAtencionPN->currentPage() < $quejasEnAtencionPN->lastPage())
+                @if ($quejasEnAtencionPJ->currentPage() < $quejasEnAtencionPJ->lastPage())
                     <li class="page-item">
-                        <a class="page-link" href="{{ $quejasEnAtencionPN->nextPageUrl() }}">Next</a>
+                        <a class="page-link" href="{{ $quejasEnAtencionPJ->nextPageUrl() }}">Next</a>
                     </li>
                 @endif
             </ul>
