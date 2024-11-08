@@ -8,24 +8,26 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>#</th>
                 <th>Reclamo ID</th>
+                <th>DNI/RUC</th>
                 <th>Tipo Reclamo</th>
                 <th>Bien Contratado</th>
                 <th>Estado Anterior</th>
                 <th>Estado Nuevo</th>
+                <th>Fecha de Creación</th>
                 <th>Fecha de Cambio</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($historial as $cambio)
             <tr>
-                <td>{{ $loop->iteration + ($historial->currentPage() - 1) * $historial->perPage() }}</td>
                 <td>{{ $cambio->reclamo_id }}</td>
+                <td>{{ $cambio->dni ?? $cambio->ruc }}</td>
                 <td>{{ $cambio->tipo_reclamo }}</td>
                 <td>{{ $cambio->bien_contratado }}</td>
                 <td>{{ $cambio->estado_anterior }}</td>
                 <td>{{ $cambio->estado_nuevo }}</td>
+                <td>{{ $cambio->fecha_creacion }}</td>
                 <td>{{ $cambio->fecha_cambio }}</td>
             </tr>
             @endforeach
