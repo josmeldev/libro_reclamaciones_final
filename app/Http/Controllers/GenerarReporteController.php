@@ -57,7 +57,7 @@ class GenerarReporteController extends Controller
             $query->whereBetween('r.created_at', [$request->input('fecha_inicio'), $request->input('fecha_fin')]);
         }
     
-        $resultados = $query->get();
+        $resultados = $query->orderBy('r.created_at', 'desc')->paginate(5);
     
         return view('administration.reporte', compact('resultados'));
     }

@@ -44,6 +44,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Generar Reporte</button>
+    <a href="/generar-reporte" class="btn btn-secondary">Limpiar Filtros</a>
 </form>
 
 @if(isset($resultados) && count($resultados) > 0)
@@ -51,7 +52,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>DNI/RUC</th>
                 <th>Nombres y Apellidos/Razón Social</th>
                 <th>Telefono</th>
@@ -73,7 +74,7 @@
         <tbody>
             @foreach ($resultados as $row)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $row->reclamo_id  }}</td>
                 <td>{{ $row->dni ?? $row->ruc }}</td>
                 <td>{{ $row->apellidos_cliente ?? $row->razon_social }}</td>
                 <td>{{ $row->telefono_cliente ?? $row->telefono_empresa }}</td>
@@ -94,6 +95,10 @@
             @endforeach
         </tbody>
     </table>
+    <!-- Enlaces de paginación -->
+    <div class="d-flex justify-content-center">
+        {{ $resultados->links() }}
+    </div>
 @else
     <p>No se encontraron resultados para los filtros seleccionados.</p>
 @endif
