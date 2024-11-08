@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController as FormController;
 use App\Http\Controllers\GenerarReporte;
+use App\Http\Controllers\ReclamoController;
 
 
 
@@ -38,7 +39,9 @@ Route::get('/reclamos-juridicas-en-atencion', [FormController::class, 'ConsultaR
 Route::get('/reclamos-juridicas-atendidas', [FormController::class, 'ConsultaReclamosAtendidosPJ'])->name('admin.PJ.Reclamos.atendidos');
 
 
+// actualizar estado
 
+Route::post('/update-estado', [ReclamoController::class, 'updateEstado'])->name('update.estado');
 
 
 

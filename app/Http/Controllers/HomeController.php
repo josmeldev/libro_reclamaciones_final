@@ -416,9 +416,19 @@ class HomeController extends Controller
         return view('administration.quejas.en_atencion', compact('quejasEnAtencionPN'));
     }
 
+    
+
+
+    public function ConsultaReclamosPorAtenderPN(){
+
+        $reclamosPorAtenderPN = $this->consultarReclamosPorAtender()->paginate(5);
+        return view('administration.reclamos.por_atender', compact('reclamosPorAtenderPN'));
+    }
+
     private function consultarReclamosPorAtender(){
         return DB::table('clientes AS c')
             ->select(
+                'r.id as reclamo_id',
                 'c.dni AS dni',
                 'c.nombres_apellidos AS apellidos_cliente',
                 'c.fono_persona AS telefono_cliente',
@@ -438,13 +448,6 @@ class HomeController extends Controller
             ->whereIn('r.tipo_reclamo', ['reclamo']) // Permitir tanto reclamos como quejas
             ->where('r.estado', 'POR ATENDER');
 
-    }
-
-
-    public function ConsultaReclamosPorAtenderPN(){
-
-        $reclamosPorAtenderPN = $this->consultarReclamosPorAtender()->paginate(5);
-        return view('administration.reclamos.por_atender', compact('reclamosPorAtenderPN'));
     }
 
     private function consultarReclamosEnAtencion(){
