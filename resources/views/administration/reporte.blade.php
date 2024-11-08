@@ -42,13 +42,17 @@
         <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control">
     </div>
 
-    <div class="form-group">
+    <div class="form-group pb-2">
         <label for="fecha_fin">Fecha Fin</label>
         <input type="date" name="fecha_fin" id="fecha_fin" class="form-control">
     </div>
 
     <button type="submit" class="btn btn-primary">Generar Reporte</button>
     <a href="/generar-reporte" class="btn btn-secondary">Limpiar Filtros</a>
+
+    <div class="d-flex justify-content-end mt-4">
+        <a href="{{ route('generar.reporte.pdf', request()->query()) }}" class="btn btn-danger">Descargar PDF</a>
+    </div>
 </form>
 
 @if(isset($resultados) && count($resultados) > 0)
@@ -103,10 +107,8 @@
     <div class="d-flex justify-content-center pb-5">
         {{ $resultados->links() }}
     </div>
-    <!-- Botón para descargar PDF -->
-    <div class="d-flex justify-content-center mt-4">
-        <a href="{{ route('generar.reporte.pdf', request()->query()) }}" class="btn btn-danger">Descargar PDF</a>
-    </div>
+    
+    
 @else
     <p>No se encontraron resultados para los filtros seleccionados.</p>
 @endif
