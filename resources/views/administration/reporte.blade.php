@@ -32,6 +32,10 @@
             <option value="ATENDIDO">ATENDIDO</option>
         </select>
     </div>
+    <div class="form-group">
+        <label for="dni_ruc">DNI/RUC</label>
+        <input type="text" name="dni_ruc" id="dni_ruc" class="form-control" placeholder="Ingrese DNI o RUC">
+    </div>
 
     <div class="form-group">
         <label for="fecha_inicio">Fecha Inicio</label>
