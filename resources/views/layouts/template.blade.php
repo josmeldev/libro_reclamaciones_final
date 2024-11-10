@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,15 @@
     <link rel="stylesheet" href="css/admin.css">
     <style>
         .card-body h6 {
-            font-size: 1rem; /* Ajustar el tamaño de la fuente */
+            font-size: 1rem;
+            /* Ajustar el tamaño de la fuente */
         }
+
         .card-header {
-            font-size: 0.9rem; /* Ajustar el tamaño de la fuente */
+            font-size: 0.9rem;
+            /* Ajustar el tamaño de la fuente */
         }
+
         .card-header .badge {
             background-color: red;
             color: white;
@@ -22,6 +27,7 @@
             font-size: 0.8rem;
             float: right;
         }
+
         .alerta {
             background-color: #ffcccc;
             border-left: 5px solid red;
@@ -31,8 +37,9 @@
     </style>
 
 </head>
+
 <body>
-    <div  class="content-template">
+    <div class="content-template">
 
         @yield('content')
 
@@ -50,25 +57,31 @@
             <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-circle">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-            <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-            <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
-        </svg>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <li>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit" class="dropdown-item">Cerrar sesión</button>
-            </form>
-        </li>
-    </ul>
-</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-circle">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li>
+                                @if(Auth::check())
+                                <span class="dropdown-item">Rol: {{ Auth::user()->getRoleNames()->first() }}</span>
+                                @endif
+                            </li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                </form>
+                            </li>
+
+                        </ul>
+                    </li>
                     <div class="sidebar-item-display">
                         <a href="#reclamos" data-bs-toggle="collapse" class="d-flex align-items-center justify-content-between">
                             <span>RECLAMOS</span> <i class="fas fa-angle-down"></i>
@@ -98,7 +111,7 @@
                         </div>
                     </div>
 
-                    
+
                 </ul>
             </div>
         </div>
@@ -186,38 +199,38 @@
                             </div>
                         </ul>
                     </div>
-                    
-                    
 
-                    
+
+
+
                 </div>
                 <div class="sidebar-item">
-                <a href="/generar-reporte"  class="d-flex align-items-center justify-content-between ">
-                            <strong>REPORTES</strong>
+                    <a href="/generar-reporte" class="d-flex align-items-center justify-content-between ">
+                        <strong>REPORTES</strong>
                     </a>
-                </div> 
+                </div>
                 <div class="sidebar-item">
-                <a href="/historial"  class="d-flex align-items-center justify-content-between ">
-                            <strong>HISTORIAL</strong>
+                    <a href="/historial" class="d-flex align-items-center justify-content-between ">
+                        <strong>HISTORIAL</strong>
                     </a>
-                </div>  
+                </div>
                 <div class="sidebar-item">
-                <a href="/users"  class="d-flex align-items-center justify-content-between ">
-                            <strong>USUARIOS</strong>
+                    <a href="/users" class="d-flex align-items-center justify-content-between ">
+                        <strong>USUARIOS</strong>
                     </a>
-                </div>      
+                </div>
             </div>
 
 
-        <script>
-            function showSubmenu(submenuId) {
-            console.log(`Showing submenu for: ${submenuId}`);
-            const submenu = document.getElementById(`submenu-${submenuId}`);
-            if (submenu) {
-                submenu.classList.toggle('show');
-            }
-        }
-        </script>
+            <script>
+                function showSubmenu(submenuId) {
+                    console.log(`Showing submenu for: ${submenuId}`);
+                    const submenu = document.getElementById(`submenu-${submenuId}`);
+                    if (submenu) {
+                        submenu.classList.toggle('show');
+                    }
+                }
+            </script>
 
 
 
@@ -241,9 +254,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 
 </html>
-

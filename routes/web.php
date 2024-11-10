@@ -7,6 +7,7 @@ use App\Http\Controllers\GenerarReporteController;
 use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -41,4 +42,7 @@ Route::middleware(['auth','role:Administrador'])->group(function () {
     Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
     Route::get('/reporte-excel', [GenerarReporteController::class, 'reporteExcel'])->name('reporte.excel');
     Route::get('/reporte-pdf', [GenerarReporteController::class, 'reportePDF'])->name('reporte.pdf');
+    Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+    Route::post('/users/{user}/role', [UserController::class, 'assignRole'])->name('admin.users.assignRole');
+
 });
