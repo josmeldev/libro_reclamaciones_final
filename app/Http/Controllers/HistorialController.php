@@ -22,7 +22,7 @@ class HistorialController extends Controller
                 'e.ruc'
             )
             ->orderBy('h.fecha_cambio', 'desc')
-            ->paginate(10);
+            ->paginate(8);
 
         return view('administration.historial', compact('historial'));
     }

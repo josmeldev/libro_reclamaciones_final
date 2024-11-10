@@ -4,6 +4,17 @@
 @section('content')
 <div class="container mt-4">
     <h3 class="title text-center">Administrar Roles de Usuarios</h3>
+
+    <!-- Formulario de búsqueda -->
+    <form method="GET" action="{{ route('admin.users.index') }}" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="email" class="form-control" placeholder="Buscar por email" value="{{ request('email') }}">
+            <button type="submit" class="btn btn-primary" style="background-color: #382B19; border-color: #382B19;">Buscar</button>
+        </div>
+    </form>
+
+    
+
     <table class="table">
         <thead>
             <tr>
@@ -43,9 +54,17 @@
             @endforeach
         </tbody>
     </table>
+
+    <!-- Paginador -->
+    <div class="d-flex justify-content-center">
+        {{ $users->links() }}
+    </div>
 </div>
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
 $(document).ready(function() {
     $('.role-select').change(function() {
@@ -71,6 +90,8 @@ $(document).ready(function() {
             });
         }
     });
+
+    
 });
 </script>
 @endsection
