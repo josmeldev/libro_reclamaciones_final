@@ -4,62 +4,76 @@
 @section('content')
 <h3 class="title text-center">Generar Reporte de Reclamos y Quejas</h3>
 
-<form method="GET" action="{{ route('generar.reporte') }}">
-    <div class="form-group">
-        <label for="tipo_reclamo">Tipo de Reclamo</label>
-        <select name="tipo_reclamo" id="tipo_reclamo" class="form-control">
-            <option value="">Seleccione</option>
-            <option value="reclamo">Reclamo</option>
-            <option value="queja">Queja</option>
-        </select>
-    </div>
+<div class="container mt-4">
+    
 
-    <div class="form-group">
-        <label for="persona_tipo">Tipo de Persona</label>
-        <select name="persona_tipo" id="persona_tipo" class="form-control">
-            <option value="">Seleccione</option>
-            <option value="natural">Persona Natural</option>
-            <option value="juridica">Persona Jurídica</option>
-        </select>
-    </div>
+    <form method="GET" action="{{ route('generar.reporte') }}">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="tipo_reclamo">Tipo de Reclamo</label>
+                    <select name="tipo_reclamo" id="tipo_reclamo" class="form-control">
+                        <option value="">Seleccione</option>
+                        <option value="reclamo">Reclamo</option>
+                        <option value="queja">Queja</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="persona_tipo">Tipo de Persona</label>
+                    <select name="persona_tipo" id="persona_tipo" class="form-control">
+                        <option value="">Seleccione</option>
+                        <option value="natural">Persona Natural</option>
+                        <option value="juridica">Persona Jurídica</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <select name="estado" id="estado" class="form-control">
+                        <option value="">Seleccione</option>
+                        <option value="POR ATENDER">POR ATENDER</option>
+                        <option value="EN ATENCION">EN ATENCION</option>
+                        <option value="ATENDIDO">ATENDIDO</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="dni_ruc">DNI/RUC</label>
+                    <input type="text" name="dni_ruc" id="dni_ruc" class="form-control" placeholder="Ingrese DNI o RUC">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="reclamo_id">ID de Reclamo</label>
+                    <input type="text" name="reclamo_id" id="reclamo_id" class="form-control" placeholder="Ingrese ID de Reclamo">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="fecha_inicio">Fecha Inicio</label>
+                    <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="fecha_fin">Fecha Fin</label>
+                    <input type="date" name="fecha_fin" id="fecha_fin" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary me-2" style="background-color: #382B19; border-color: #382B19;">Buscar</button>
+                <a href="/generar-reporte" class="btn btn-secondary me-2" style="background-color: #382B19; border-color: #382B19;">Limpiar Filtros</a>
+                <a href="{{ route('generar.reporte.pdf', request()->query()) }}" class="btn btn-danger" style="background-color: #382B19; border-color: #382B19;">Descargar PDF</a>
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="estado">Estado</label>
-        <select name="estado" id="estado" class="form-control">
-            <option value="">Seleccione</option>
-            <option value="POR ATENDER">POR ATENDER</option>
-            <option value="EN ATENCION">EN ATENCION</option>
-            <option value="ATENDIDO">ATENDIDO</option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label for="dni_ruc">DNI/RUC</label>
-        <input type="text" name="dni_ruc" id="dni_ruc" class="form-control" placeholder="Ingrese DNI o RUC">
-    </div>
-
-    <div class="form-group">
-        <label for="reclamo_id">ID de Reclamo</label>
-        <input type="text" name="reclamo_id" id="reclamo_id" class="form-control" placeholder="Ingrese ID de Reclamo">
-    </div>
-
-    <div class="form-group">
-        <label for="fecha_inicio">Fecha Inicio</label>
-        <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control">
-    </div>
-
-    <div class="form-group pb-2">
-        <label for="fecha_fin">Fecha Fin</label>
-        <input type="date" name="fecha_fin" id="fecha_fin" class="form-control">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Generar Reporte</button>
-    <a href="/generar-reporte" class="btn btn-secondary">Limpiar Filtros</a>
-
-    <div class="d-flex justify-content-end mt-4">
-        <a href="{{ route('generar.reporte.pdf', request()->query()) }}" class="btn btn-danger">Descargar PDF</a>
-    </div>
-</form>
+        
+    </form>
+</div>
 
 @if(isset($resultados) && count($resultados) > 0)
     <h4 class="mt-4">Resultados del Reporte</h4>
@@ -94,8 +108,8 @@
                 <td>{{ $row->telefono_cliente ?? $row->telefono_empresa }}</td>
                 <td>{{ $row->correo_cliente ?? $row->direccion_empresa }}</td>
                 @if(request('persona_tipo') == 'natural' || !request('persona_tipo'))
-                    <td>{{ $row->menor_edad }}</td>
-                    <td>{{ $row->apellidos_apoderado }}</td>
+                    <td>{{ $row->menor_edad}}</td>
+                    <td>{{ $row->apellidos_apoderado}}</td>
                     <td>{{ $row->dni_apoderado }}</td>
                     <td>{{ $row->direccion_apoderado }}</td>
                 @endif

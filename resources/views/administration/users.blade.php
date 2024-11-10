@@ -10,6 +10,7 @@
         <div class="input-group">
             <input type="text" name="email" class="form-control" placeholder="Buscar por email" value="{{ request('email') }}">
             <button type="submit" class="btn btn-primary" style="background-color: #382B19; border-color: #382B19;">Buscar</button>
+            <a href="/users" class="btn btn-secondary ms-2" style="background-color: #382B19; border-color: #382B19;">Borrar Filtros</a>
         </div>
     </form>
 

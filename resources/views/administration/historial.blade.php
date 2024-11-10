@@ -4,6 +4,15 @@
 @section('content')
 <h3 class="title text-center">Historial de Cambios de Estado</h3>
 
+<!-- Formulario de búsqueda -->
+<form method="GET" action="{{ route('historial.index') }}" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="dni_ruc" class="form-control" placeholder="Buscar por DNI/RUC" value="{{ request('dni_ruc') }}">
+        <button type="submit" class="btn btn-primary" style="background-color: #382B19; border-color: #382B19;">Buscar</button>
+        <a href="{{ route('historial.index') }}" class="btn btn-secondary ms-2" style="background-color: #382B19; border-color: #382B19;">Borrar Filtros</a>
+    </div>
+</form>
+
 @if($historial->count() > 0)
     <table class="table table-striped">
         <thead>

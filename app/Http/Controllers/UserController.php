@@ -16,7 +16,7 @@ class UserController extends Controller
             $query->where('email', 'like', '%' . $request->email . '%');
         }
 
-        $users = $query->orderBy('id', 'desc')->paginate(6);
+        $users = $query->where('id', '!=', 1)->orderBy('id', 'desc')->paginate(6);
 
         return view('administration.users', compact('users'));
     }
