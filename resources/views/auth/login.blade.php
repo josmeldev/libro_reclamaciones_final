@@ -47,8 +47,11 @@
                 </a>
                 @endif
 
+                <x-button class="ms-4" onclick="window.location='{{ route('register') }}'">
+        {{ __('Registrarse') }}
+    </x-button>
                 <x-button class="ms-4">
-                    {{ __('Iniciar Sesión') }}
+                    {{ __('Ingresar') }}
                 </x-button>
             </div>
         </form>
