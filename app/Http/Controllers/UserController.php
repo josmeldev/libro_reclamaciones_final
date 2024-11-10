@@ -27,4 +27,11 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.index')->with('success', 'Rol asignado correctamente.');
     }
+    public function delete($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('admin.users.index')->with('success', 'Usuario borrado correctamente.');
+    }
 }
