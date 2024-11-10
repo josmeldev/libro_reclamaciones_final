@@ -74,6 +74,11 @@
                                 @endif
                             </li>
                             <li>
+                                @if(Auth::check())
+                                <span class="dropdown-item">Correo: {{ Auth::user()->email }}</span>
+                                @endif
+                            </li>
+                            <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button type="submit" class="dropdown-item">Cerrar sesión</button>
