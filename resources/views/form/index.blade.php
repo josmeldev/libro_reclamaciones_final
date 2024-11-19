@@ -26,9 +26,12 @@
                     <span style="color: rgb(36, 33, 18); font-weight: bold">RECLAMACIONES</span>
                 </h4>
             </div>
-            <div class="col align-self-start  " style="border-bottom: 2px solid rgb(36, 24, 2);" id="div-image">
-                <img src="{{ asset('images/libro-abierto1.png') }}" class="card-img-top rounded" alt="..." style="width: 200px; height: 160px;">
+            <br>
+            <div class="col align-self-start  " style="border-bottom: 2px solid rgb(36, 24, 2); padding-bottom: 10px;" id="div-image">
+                <img src="{{ asset('images/logo-parque.webp') }}" class="card-img-top rounded" alt="..." style="width: 200px; height: 150px;">
+                
             </div>
+            
         </div>
 
         <div class="card-body col-md-12 y">

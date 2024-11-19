@@ -127,9 +127,9 @@
     <div class="container-fluid sidebar">
         <div class="sidebar ">
             <div class="sidebar-image p-3">
-                <figure class="figure">
+                <figure class="figure d-flex justify-content-center">
                     <a href="/admin">
-                        <img src="{{ asset('images/logo-parque.png') }}" alt="Logo Empresa" class="figure-img img-fluid">
+                        <img src="{{ asset('images/logo-parque.webp') }}" style="width: 100px;" alt="Logo Empresa" class="figure-img img-fluid">
                     </a>
                 </figure>
             </div>
