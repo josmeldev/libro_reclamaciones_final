@@ -38,9 +38,9 @@
                         <td>{{ $row->bien_contratado }}</td>
                         <td>{{ $row->reclamo_o_queja }}</td>
                         <td>{{ $row->detalle_reclamacion }}</td>
-                        <td>
-                    <select class="form-control estado-select" data-id="{{$row->reclamo_id}}">
-                        <option value="POR ATENDER" {{ $row->estado == 'POR ATENDER' ? 'selected' : '' }}>POR ATENDER</option>
+                        <td style="white-space: nowrap;">
+                    <select class="form-control estado-select" data-id="{{$row->reclamo_id}}" style="width: auto;">
+                        <option value="POR ATENDER" {{$row->estado == 'POR ATENDER' ? 'selected' : '' }}>POR ATENDER</option>
                         <option value="EN ATENCION" {{ $row->estado == 'EN ATENCION' ? 'selected' : '' }}>EN ATENCION</option>
                         <option value="ATENDIDO" {{ $row->estado == 'ATENDIDO' ? 'selected' : '' }}>ATENDIDO</option>
                     </select>
