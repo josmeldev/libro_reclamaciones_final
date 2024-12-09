@@ -9,6 +9,8 @@ use App\Models\Empresa;
 use App\Models\Apoderado;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use App\Mail\ReclamoRegistrado;
+use Illuminate\Support\Facades\Mail;
 
 
 
@@ -45,6 +47,16 @@ class HomeController extends Controller
 
             $reclamo->cliente_id = $cliente->id;
             $reclamo->empresa_id = null;
+
+            $reclamo->tipo_reclamo = $request->tipo_reclamo;
+        $reclamo->bien_contratado = $request->bien_contratado;
+        $reclamo->texto_reclamo = $request->texto_reclamo;
+        $reclamo->texto_queja = $request->texto_queja;
+        $reclamo->detalle_reclamacion = $request->detalle_reclamacion;
+        $reclamo->leido_aceptado = $request->has('leido_aceptado') ? 1 : 0;
+        $reclamo->save();
+
+            Mail::to($cliente->email)->send(new ReclamoRegistrado($reclamo, $cliente));
         } elseif ($request->tipo_persona == 'juridica') {
             $empresa = new Empresa();
             $empresa->razon_social = $request->razon_social;
@@ -57,16 +69,18 @@ class HomeController extends Controller
 
             $reclamo->cliente_id = null;
             $reclamo->empresa_id = $empresa->id;
-        }
 
-        // Guardar los datos del reclamo
-        $reclamo->tipo_reclamo = $request->tipo_reclamo;
+            $reclamo->tipo_reclamo = $request->tipo_reclamo;
         $reclamo->bien_contratado = $request->bien_contratado;
         $reclamo->texto_reclamo = $request->texto_reclamo;
         $reclamo->texto_queja = $request->texto_queja;
         $reclamo->detalle_reclamacion = $request->detalle_reclamacion;
         $reclamo->leido_aceptado = $request->has('leido_aceptado') ? 1 : 0;
         $reclamo->save();
+            Mail::to($empresa->email_empresa)->send(new ReclamoRegistrado($reclamo, $empresa));
+        }
+
+       
 
         // Si el reclamante es menor de edad, guardar los datos del apoderado
         if ($request->menor_edad == 'si') {
