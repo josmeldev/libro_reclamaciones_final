@@ -52,6 +52,7 @@ class HomeController extends Controller
             $empresa->direccion = $request->direccion;
             $empresa->fono_empresa = $request->fono_empresa;
             $empresa->tipo_persona = $request->tipo_persona;
+            $empresa->email_empresa = $request->email_empresa;
             $empresa->save();
 
             $reclamo->cliente_id = null;

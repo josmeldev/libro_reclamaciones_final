@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('direccion', 255);
             $table->string('fono_empresa', 9);
             $table->string('tipo_persona');
-
+            $table->string('email_empresa', 255);
 
             $table->timestamps();
         });

@@ -93,6 +93,11 @@
                             <label for="fono_empresa">Teléfono:</label><br>
                             <input type="tel" id="fono_empresa" name="fono_empresa" pattern="[0-9]{9,14}" maxlength="9" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 11);" minlength="9"><br>
                         </div>
+                        
+                        <div class="col-md-6">
+                            <label for="email_empresa">Correo:</label>
+                            <input type="email" id="email_empresa" name="email_empresa" class="form-control"><br>
+                        </div>
 
                     </div>
 

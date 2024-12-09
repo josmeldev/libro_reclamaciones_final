@@ -10,7 +10,7 @@ class empresa extends Model
     use HasFactory;
 
     protected $fillable = [
-        'razon_social', 'ruc', 'direccion', 'fono_empresa', 'tipo_persona',
+        'razon_social', 'ruc', 'direccion', 'fono_empresa', 'tipo_persona', 'email_empresa'
     ];
 
     // Relación con reclamos
