@@ -28,7 +28,7 @@
             </div>
             <br>
             <div class="col align-self-start  " style="border-bottom: 2px solid rgb(36, 24, 2); padding-bottom: 10px;" id="div-image">
-                <img src="{{ asset('images/logo-parque.webp') }}" class="card-img-top rounded" alt="..." style="width: 200px; height: 150px;">
+                <img src="{{ asset('images/logo-R-B.jpg') }}" class="card-img-top rounded" alt="..." style="width: 200px; height: 150px;">
                 
             </div>
             
